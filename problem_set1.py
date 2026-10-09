@@ -1,5 +1,12 @@
+import time
 def main():
     blue()
+    time.sleep(5)
+    blastoff()
+    time.sleep(5)
+    print(candy_shop())
+    time.sleep(5)
+    fruit_pricing()
 
 def blue():
     red =3
@@ -7,10 +14,10 @@ def blue():
     print (purple)
 
 def blastoff():
-    count = input("what number do you want to count from? ")
+    count = int(input("what number do you want to count from? "))
     for i in range (count, 0, -1):
         print (i)
-    print (blastoff)
+    print ("Blastoff")
 
 def candy_shop():
     candies = ["skittles","haribo","sour patch"]
@@ -19,7 +26,10 @@ def candy_shop():
     candies.sort()
     candies.remove("kit kat")
     #ask user for 3 candies and add them to the list
-    user_candies=[]
+    candy1=input("#1 favorite candy: ")
+    candy2=input("#2 favorite candy: ")
+    candy3=input("#2 favorite candy: ")
+    user_candies=[candy1,candy2,candy3]
     all_candies= user_candies+candies
     print (len(all_candies))
     print(*all_candies,sep="\n")
@@ -34,19 +44,9 @@ def fruit_pricing():
     for i in fruits:
         if fruits.get(i)>=1.25:
             print(i)
-    trip=3*fruits["apples"]+2*fruits["banana"]+fruits["coconut"]
-    print("trip")
-
-
-            
-
-
-
-          
-
-    
-    
-
+    trip=3*fruits["apple"]+2*fruits["banana"]+fruits["coconut"]
+    print(trip)
+ 
 if __name__ == "__main__":#runs the whole project
     main()
-        
+     
