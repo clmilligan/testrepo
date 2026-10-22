@@ -1,0 +1,12 @@
+1. The purpose of the program is to create a centralized area where a student can keep their grades. 
+It also allows them to get information about their grades easily through simple questions.
+
+2. Two possible users are a student keeping track of their grades and another could be an advisor keeping track of their advisees grades.
+
+3. Two non negotioables are the print_all_averages, because it gives the student acess to all the information, and the other is the add_grade function
+because without it the student would not be able to update their grades. One nice to have is the main method being as nice as it is because if it where
+less organised it would still be relatively easy to get the information needed.
+
+4. I would create a larger class (idk if that is possible in python) so teachers could use it for all their students. 
+I would also create a method that can calculate the score needed on the next assesment to get a certain grade. 
+They would give more help to the users and elaborate my project!
