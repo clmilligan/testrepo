@@ -4,7 +4,7 @@ gradebook={
 def main():
     y=True
     while y!=False:
-        print ("What do you need help with?")
+        print ("What do you need help with? (1-5)")
         print ("1. Adding a grade/class?")
         print("2. Getting your average in a certain class? ")
         print("3. Printing all of your grades in a certain class?")
