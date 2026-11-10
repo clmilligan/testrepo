@@ -1,8 +1,17 @@
-gradebook={
-        "math":[75,92,100],"english":[90,93,96],"science":[88,92,94],"french":[98,99,97]
-    }
-def main():
+import csv
+gradebook={}
+
+    
+def main():#runs all of the programs in a way that makes it easy for the user
     y=True
+    with open('grades.csv','r') as f:
+        data = csv.reader(f)
+        for row in data:
+            if row:
+                    key=row[0]
+                    values=[int(val) for val in row[1:] if val.strip()]
+                    gradebook[key]=values
+        print(gradebook)
     while y!=False:
         print ("What do you need help with? (1-5)")
         print ("1. Adding a grade/class?")
@@ -11,14 +20,14 @@ def main():
         print("4. Printing the averages of all the grades in all of your classes? ")
         pick=int(input("5. Getting your gpa? "))
         if(pick==1):
-            course = input("what class would you like to add a grade for? ")
+            course = input("what class would you like to add a grade for? ").lower()
             grade = int(input("what grade are you adding? "))
             add_grade(course,grade)
         elif (pick==2):
-            course = input("what class would you like to get your average for? ")
+            course = input("what class would you like to get your average for? ").lower()
             print_average(course)
         elif (pick==3):
-            course = input("what class would you like to get your grades for? ")
+            course = input("what class would you like to get your grades for? ").lower()
             print_grades(course)
         elif(pick==4):
             print_all_averages()
@@ -26,11 +35,15 @@ def main():
             print(get_GPA())
         else:
             print("please pick a valid option")
-        temp=input("Do you need any more help? (y/n)")
+        temp=input("Do you need any more help? (y/n)").lower()
         if temp=="y":
             y=True
         else:
             y=False
+    with open("grades.csv","w",newline="")as file:
+        writer=csv.writer(file)
+        for key, value in gradebook.items():
+            writer.writerow([key] + [str(v) for v in value])
 
         
     
@@ -75,7 +88,7 @@ def print_all_averages():#gives the average of all the classes and tells the use
     print("your lowest grade is "+ (list(gradebook.keys())[low])+" with an average of "+str(averages[low]))
     print("your highest grade is "+ (list(gradebook.keys())[high])+" with an average of "+str(averages[high]))
 
-def get_GPA():
+def get_GPA():#prints the users gpa based on their average
     averages=[]
     for subject in gradebook:
         grades = gradebook[subject]
