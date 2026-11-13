@@ -40,7 +40,7 @@ def main():#runs all of the programs in a way that makes it easy for the user
             y=True
         else:
             y=False
-    with open("grades.csv","w",newline="")as file:
+    with open("grades.csv","w",newline="")as file:#overides the csv and adds the info 
         writer=csv.writer(file)
         for key, value in gradebook.items():
             writer.writerow([key] + [str(v) for v in value])
@@ -53,6 +53,7 @@ def add_grade(subject, grade):#takes in subj with grade and adds grade to subj i
         gradebook[subject].append(grade)
     else:
         gradebook[subject] = [grade]
+    print(grade+"added to "+subject)
 
 def print_average(subject):#gets the average grade of the subject that is the parameter
     grades = gradebook[subject]
@@ -110,6 +111,13 @@ def get_GPA():#prints the users gpa based on their average
         return("1.0 or D")
     else:
         return("0.0 or C")
+
+def remove_grade(subject, grade):#removes a grade based on a given subject and grade
+    if subject in gradebook and grade in gradebook[subject]:
+        gradebook.subject.remove(grade)
+        print("grade succesfully removed")
+    else:
+        print ("thet grade dosent exist in "+subject)
 
 
 
