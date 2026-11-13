@@ -1,4 +1,5 @@
 import csv
+import matplotlib.pyplot as plt;
 gradebook={}
 
     
@@ -40,7 +41,7 @@ def main():#runs all of the programs in a way that makes it easy for the user
             grade = int(input("what grade are you removing? "))
             remove_grade(course,grade)
         elif (pick==7):
-            visualize_grades
+            visualize_grades()
         else:
             print("please pick a valid option")
         temp=input("Do you need any more help? (y/n)").lower()
@@ -127,8 +128,8 @@ def remove_grade(subject, grade):#removes a grade based on a given subject and g
     else:
         print ("thet grade dosent exist in "+subject)
 
-def visualize_grades():
-    courses=gradebook.keys()
+def visualize_grades():#depicts the grades as a bar graph
+    courses=list(gradebook.keys())
     averages=[]
     for subject in gradebook:
         grades = gradebook[subject]
@@ -138,6 +139,7 @@ def visualize_grades():
     plt.title('Grades Representation')
     plt.xlabel('Classes')
     plt.ylabel('Grades')
+    plt.show()
 
 
 
