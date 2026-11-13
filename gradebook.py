@@ -62,7 +62,7 @@ def add_grade(subject, grade):#takes in subj with grade and adds grade to subj i
         gradebook[subject].append(grade)
     else:
         gradebook[subject] = [grade]
-    print(grade+"added to "+subject)
+    print(str(grade)+"added to "+subject)
 
 def print_average(subject):#gets the average grade of the subject that is the parameter
     grades = gradebook[subject]
@@ -87,17 +87,10 @@ def print_all_averages():#gives the average of all the classes and tells the use
     for subject in gradebook:
         print("your average grade in "+subject+" is "+str(averages[i]))
         i+=1
-    low=0
-    for i in range (len(gradebook)-1):
-        if averages[i]<averages[i+1] and averages[i]<averages[low]:
-            low=i
-    high=0
-    for i in range (len(gradebook)-1):
-            if averages[i]>averages[i+1]and averages[i]>averages[high]:
-                high=i
-    print("your lowest grade is "+ (list(gradebook.keys())[low])+" with an average of "+str(averages[low]))
-    print("your highest grade is "+ (list(gradebook.keys())[high])+" with an average of "+str(averages[high]))
-
+    low = averages.index(min(averages))
+    high = averages.index(max(averages))
+    print(low)
+    print(high)
 def get_GPA():#prints the users gpa based on their average
     averages=[]
     for subject in gradebook:
@@ -123,7 +116,7 @@ def get_GPA():#prints the users gpa based on their average
 
 def remove_grade(subject, grade):#removes a grade based on a given subject and grade
     if subject in gradebook and grade in gradebook[subject]:
-        gradebook.subject.remove(grade)
+        gradebook[subject].remove(grade)
         print("grade succesfully removed")
     else:
         print ("thet grade dosent exist in "+subject)
