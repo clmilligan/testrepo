@@ -18,7 +18,9 @@ def main():#runs all of the programs in a way that makes it easy for the user
         print("2. Getting your average in a certain class? ")
         print("3. Printing all of your grades in a certain class?")
         print("4. Printing the averages of all the grades in all of your classes? ")
-        pick=int(input("5. Getting your gpa? "))
+        print("5. Getting your gpa?")
+        print("6. Removing a certain grade in a certain class?")
+        pick=int(input("7. Vizualise your grades? "))
         if(pick==1):
             course = input("what class would you like to add a grade for? ").lower()
             grade = int(input("what grade are you adding? "))
@@ -33,6 +35,12 @@ def main():#runs all of the programs in a way that makes it easy for the user
             print_all_averages()
         elif(pick==5):
             print(get_GPA())
+        elif(pick==6):
+            course = input("what class would you like to remove a grade for? ").lower()
+            grade = int(input("what grade are you removing? "))
+            remove_grade(course,grade)
+        elif (pick==7):
+            visualize_grades
         else:
             print("please pick a valid option")
         temp=input("Do you need any more help? (y/n)").lower()
@@ -118,6 +126,19 @@ def remove_grade(subject, grade):#removes a grade based on a given subject and g
         print("grade succesfully removed")
     else:
         print ("thet grade dosent exist in "+subject)
+
+def visualize_grades():
+    courses=gradebook.keys()
+    averages=[]
+    for subject in gradebook:
+        grades = gradebook[subject]
+        avgGrade = sum(grades)/len(grades)
+        averages.append(avgGrade)
+    plt.bar(courses,averages,color='green')
+    plt.title('Grades Representation')
+    plt.xlabel('Classes')
+    plt.ylabel('Grades')
+
 
 
 
